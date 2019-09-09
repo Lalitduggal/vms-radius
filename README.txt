@@ -1,3 +1,214 @@
+Project Summary:
+
+A visitor walks in at the office reception. There is an Ipad/Tablet/Phone/Laptop on which a URL is opened on a browser.
+
+
+
+http://www.exihub.com/vms/radius/sydney/visitor
+or
+http://exihub.com/vms/radius/sydney/visitor
+
+There is a login page in which the reception person will login so that visitors can checkin
+
+Username: xxxxx
+Password: xxxxx
+login
+
+Once successfully logged in. It will be logged in for 12 hours and log out button is presented on top right corner.
+
+Visitor details: 
+Name: xxxx
+Email: xxxx
+Mobile: +61 - 123456789
+Organization: xxxx
+Purpose: Meeting/Personal/Interview/Others
+To Meet Employee: droplist of emp names
+Check In
+
+As soon as the person clicks on Check In button:
+	An Email is sent to the Employee provinding information about the Visitor
+	An SMS is sent to the Employee provinding information about the Visitor
+	An Email is sent to the Visitor provinding information about the successful checkin
+	An SMS is sent to the Visitor provinding information about the successful checkin
+	
+
+
+
+
+
+There is another login page which reception uses:
+
+http://www.exihub.com/vms/radius/sydney/reception
+or
+http://exihub.com/vms/radius/sydney/reception
+
+
+Username: xxxxx
+Password: xxxxx
+login
+
+Once successfully logged in. It will be logged in for 12 hours and log out button is presented on top right corner.
+This will display all the visitors which are visiting this premises today in a tabular manner with following details:
+By default: The data is sorted based on the CheckInDateTime.
+The data can also be sorted in ascending and descending order when clicked on column names.
+
+
+VisitorName | VisitorEmail |  VisitorMobile | VisitorOrganization | VisitorPurpose | EmpEmail | CheckInDateTime | CheckOutDateTime
+
+
+By default the CheckOutDateTime will show CheckOut button.
+
+After the visitor has met the employee and going out.
+The reception will checkout the visitor by clicking the CheckOut button.
+As soon as the reception clicks on Check Out button for that visitor:
+	An Email is sent to the Employee provinding information about the Visitor
+	An SMS is sent to the Employee provinding information about the Visitor
+	An Email is sent to the Visitor provinding information about the successful checkin
+	An SMS is sent to the Visitor provinding information about the successful checkin
+
+
+
+
+
+
+
+
+There is another login page which admin uses:
+
+http://www.exihub.com/vms/radius/sydney/admin
+or
+http://exihub.com/vms/radius/sydney/admin
+
+
+Username: xxxxx
+Password: xxxxx
+login
+
+Once successfully logged in. It will be logged in for 12 hours and log out button is presented on top right corner.
+
+
+
+It will have menus for:
+
+Employee
+	Add | Bulk Upload
+	EmpFirstName | EmpLastName | EmpEmail | EmpMobile | EmpDepartment | EmpID | Modify | Delete
+
+By default data is sorted based on the EmpFirstName.
+However, you an click on any of the column names for ascending and decending order
+
+When you click Add button, a pop up is displayed to enter the employee details for new employee.
+
+Enter employee details for new employee:
+EmpFirstName: 
+EmpLastName: 
+EmpEmail: 
+EmpMobile: +61 - 123456789
+EmpDepartment: 
+EmpID: 
+Submit
+
+As soon as you submit and it is success: a successful message is presented.
+As soon as you submit and it is error: an error messsage is presented.
+
+
+
+
+
+
+When you click the Modify button.
+The Data in the row is enabled for Edit and th Modify button is changed to Save | Cancel
+
+As soon as you click on Save.
+On success, row is disabled for edit and button is changed back to Modify
+On error, error message prompt is made visible to user
+
+
+
+
+
+When you click the Delete button.
+A confirmation prompt appears.
+On successful deletion an success message appears and then disappears
+On error for deletion an error message appears prompt appears.
+
+
+
+
+
+
+When you click Bulk Upload button
+
+Choose a file to upload
+Hint: file should be csv file in the following format with first line as header:
+EmpFirstName,EmpLastName,EmpEmail,EmpMobile,EmpDepartment,EmpID
+
+Submit
+
+On success, a message appears: successfully uploaded
+On error, a message appears displaying error message
+
+
+
+
+
+
+
+
+
+
+Custom Report
+	StartDate:
+	EndDate:
+	Submit
+
+OnClick of Submit button: generating report is being displayed...
+
+On successful report generation following message is displayed:
+Link has been emailed to admin email id.
+
+
+
+
+
+
+
+
+Technologies:
+Browser: Chrome version xxx
+
+SCM: Git version xxx
+
+Cloud: AWS
+Serverless:
+	API Gateway: for API
+	Lambda: for micro services using python 3.7
+	Step functions: for orchestration of lambdas
+	Dynamodb: for database
+	S3: for hosting static website, storing daily/custom reports, cloudformation templates and lambda functions
+	SES: for email
+	SNS: for sms
+	Cloudformation: for Infrastructure As Code
+	SAM: as extension to Cloudformation for packaging and deploying API and Lambdas
+	Serverless (sls): as extension to Cloudformation for packaging and deploying API and Lambdas
+	IAM: for managing user, group, role, policy
+	Route53: for hosting domain and providing dns for s3 website
+	Cloudwatch: for creating dashboard to be used for monitoring and for debugging purpose
+	Cloudtrail: for auditing purpose
+	Cognito: for providing the signin page, forgot password, reset password functionality and passsord policy
+	
+
+CICD: Jenkins: As soon as you commit in Git the Git webhook gets trigged and new code is build, packaged and deployed instantly.
+
+
+Configuration: Ansible
+
+
+
+
+
+
+
 cloud: AWS
 ------
 
@@ -35,6 +246,11 @@ install git
 
 install npm
 
+install python3
+
+install pip
+
+install nodejs
 
 install serverless
 
