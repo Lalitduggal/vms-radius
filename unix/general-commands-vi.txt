@@ -1,1 +1,14 @@
+create a new file
+write to a file
+save a file
 
+go to first line
+go to last line
+
+go to 10th line
+
+go to starting of existing line
+go to end of existing line
+
+search for string
+search and replace 
